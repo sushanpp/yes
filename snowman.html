@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SnowMan Challenge</title>
+</head>
+<body>
+<canvas id="snowpersonCanvas" width="800" height="800" style="border:1px solid #000000;"></canvas>
+
+<script>
+    const canvas = document.getElementById('snowpersonCanvas');
+    const context = canvas.getContext('2d');
+
+    // Draw an ellipse
+    context.beginPath();
+    context.ellipse(400, 600, 200, 200, 0, 0, 2 * Math.PI);
+    context.stroke();
+</script>
+
+</body>
+</html>
