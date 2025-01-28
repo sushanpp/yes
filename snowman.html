@@ -11,21 +11,21 @@
     const canvas = document.getElementById('snowpersonCanvas');
     const context = canvas.getContext('2d');
 
-   
+
     context.beginPath();
     context.ellipse(400, 600, 150, 150, 0, 0, 2 * Math.PI);
     context.fillStyle = 'white';
     context.fill();
     context.stroke();
 
- 
+
     context.beginPath();
     context.ellipse(400, 400, 100, 100, 0, 0, 2 * Math.PI);
     context.fillStyle = 'white';
     context.fill();
     context.stroke();
 
-   
+    
     context.beginPath();
     context.ellipse(400, 250, 75, 75, 0, 0, 2 * Math.PI);
     context.fillStyle = 'white';
@@ -52,14 +52,14 @@
     context.fillStyle = 'orange';
     context.fill();
 
-
+    
     context.beginPath();
     context.arc(400, 270, 20, 0, Math.PI, false); 
     context.stroke();
 
-   
+
     context.beginPath();
-    context.moveTo(300, 400);
+    context.moveTo(300, 400); 
     context.lineTo(200, 350);
     context.stroke();
 
@@ -68,13 +68,14 @@
     context.lineTo(600, 350);
     context.stroke();
 
-   
+
+    
     context.beginPath();
     context.rect(325, 190, 150, 10);
     context.fillStyle = 'black';
     context.fill();
 
-   
+
     context.beginPath();
     context.rect(350, 120, 100, 70);
     context.fillStyle = 'black';
