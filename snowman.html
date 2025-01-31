@@ -3,85 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <title>Snowman Challenge</title>
+    <style>
+        #timer {
+            position: absolute;
+            top: 200px;
+            left: 850px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-<canvas id="snowpersonCanvas" width="800" height="800" style="border:1px solid #000000;"></canvas>
-
-<script>
-    const canvas = document.getElementById('snowpersonCanvas');
-    const context = canvas.getContext('2d');
-
-
-    context.beginPath();
-    context.ellipse(400, 600, 150, 150, 0, 0, 2 * Math.PI);
-    context.fillStyle = 'white';
-    context.fill();
-    context.stroke();
-
-
-    context.beginPath();
-    context.ellipse(400, 400, 100, 100, 0, 0, 2 * Math.PI);
-    context.fillStyle = 'white';
-    context.fill();
-    context.stroke();
-
+    <canvas id="snowpersonCanvas" width="800" height="800" style="border:1px solid #000000;"></canvas>
+    <div id="timer">05:00:00</div>
     
-    context.beginPath();
-    context.ellipse(400, 250, 75, 75, 0, 0, 2 * Math.PI);
-    context.fillStyle = 'white';
-    context.fill();
-    context.stroke();
+    <script>
+        const canvas = document.getElementById('snowpersonCanvas');
+        const context = canvas.getContext('2d');
 
-    
-    context.beginPath();
-    context.arc(380, 235, 5, 0, 2 * Math.PI); 
-    context.fillStyle = 'black';
-    context.fill();
+        context.beginPath();
+        context.ellipse(400, 600, 150, 150, 0, 0, 2 * Math.PI);
+        context.fillStyle = 'white';
+        context.fill();
+        context.stroke();
 
-    context.beginPath();
-    context.arc(420, 235, 5, 0, 2 * Math.PI); 
-    context.fillStyle = 'black';
-    context.fill();
+        context.beginPath();
+        context.ellipse(400, 400, 100, 100, 0, 0, 2 * Math.PI);
+        context.fillStyle = 'white';
+        context.fill();
+        context.stroke();
 
+        context.beginPath();
+        context.ellipse(400, 250, 75, 75, 0, 0, 2 * Math.PI);
+        context.fillStyle = 'white';
+        context.fill();
+        context.stroke();
 
-    context.beginPath();
-    context.moveTo(400, 250);
-    context.lineTo(400, 260);
-    context.lineTo(450, 255);
-    context.closePath();
-    context.fillStyle = 'orange';
-    context.fill();
+        context.beginPath();
+        context.arc(380, 235, 5, 0, 2 * Math.PI); 
+        context.fillStyle = 'black';
+        context.fill();
 
-    
-    context.beginPath();
-    context.arc(400, 270, 20, 0, Math.PI, false); 
-    context.stroke();
+        context.beginPath();
+        context.arc(420, 235, 5, 0, 2 * Math.PI); 
+        context.fillStyle = 'black';
+        context.fill();
 
+        context.beginPath();
+        context.moveTo(400, 250);
+        context.lineTo(400, 260);
+        context.lineTo(450, 255);
+        context.closePath();
+        context.fillStyle = 'orange';
+        context.fill();
 
-    context.beginPath();
-    context.moveTo(300, 400); 
-    context.lineTo(200, 350);
-    context.stroke();
+        context.beginPath();
+        context.arc(400, 270, 20, 0, Math.PI, false); 
+        context.stroke();
 
-    context.beginPath();
-    context.moveTo(500, 400); 
-    context.lineTo(600, 350);
-    context.stroke();
+        context.beginPath();
+        context.moveTo(300, 400); 
+        context.lineTo(200, 350);
+        context.stroke();
 
+        context.beginPath();
+        context.moveTo(500, 400); 
+        context.lineTo(600, 350);
+        context.stroke();
 
-    
-    context.beginPath();
-    context.rect(325, 190, 150, 10);
-    context.fillStyle = 'black';
-    context.fill();
+        context.beginPath();
+        context.rect(325, 190, 150, 10);
+        context.fillStyle = 'black';
+        context.fill();
 
+        context.beginPath();
+        context.rect(350, 120, 100, 70);
+        context.fillStyle = 'black';
+        context.fill();
 
-    context.beginPath();
-    context.rect(350, 120, 100, 70);
-    context.fillStyle = 'black';
-    context.fill();
-
-</script>
-
+        // Timer logic
+        let timeLeft = 5 * 60 * 60; 
+        function updateTimer() {
+            let hours = Math.floor(timeLeft / 3600);
+            let minutes = Math.floor((timeLeft % 3600) / 60);
+            let seconds = timeLeft % 60;
+            document.getElementById("timer").textContent = 
+                `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            if (timeLeft > 0) {
+                timeLeft--;
+            }
+        }
+        setInterval(updateTimer, 1000);
+    </script>
 </body>
 </html>
