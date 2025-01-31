@@ -15,7 +15,7 @@
 </head>
 <body>
     <canvas id="snowpersonCanvas" width="3000" height="3000" style="border:1px solid #000000;"></canvas>
-    <div id="timer">05:00:00</div>
+    <div id="timer">00:00:00</div>
     
     <script>
         const canvas = document.getElementById('snowpersonCanvas');
@@ -81,17 +81,19 @@
         context.fillStyle = 'black';
         context.fill();
 
-        // Timer logic
-        let timeLeft = 5 * 60 * 60; 
+        // Countdown Timer to 2027 Dec 31
         function updateTimer() {
-            let hours = Math.floor(timeLeft / 3600);
-            let minutes = Math.floor((timeLeft % 3600) / 60);
-            let seconds = timeLeft % 60;
+            const countdownDate = new Date('December 31, 2027 00:00:00').getTime();
+            const now = new Date().getTime();
+            const timeLeft = countdownDate - now;
+
+            let hours = Math.floor((timeLeft / (1000 * 60 * 60)) % 24);
+            let minutes = Math.floor((timeLeft / (1000 * 60)) % 60);
+            let seconds = Math.floor((timeLeft / 1000) % 60);
+            let days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+
             document.getElementById("timer").textContent = 
-                `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-            if (timeLeft > 0) {
-                timeLeft--;
-            }
+                `${days}d ${String(hours).padStart(2, '0')}h ${String(minutes).padStart(2, '0')}m ${String(seconds).padStart(2, '0')}s`;
         }
         setInterval(updateTimer, 1000);
     </script>
